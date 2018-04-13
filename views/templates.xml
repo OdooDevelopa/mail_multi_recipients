@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="mail_template_demo" model="mail.template">
+            <field name="name">mail_template_demo</field>
+            <field name="subject">mail_template_demo</field>
+            <field name="email_from">help@odoo.com</field>
+            <field name="email_to">
+                <![CDATA[
+                    % if object.recipient_ids:
+                    % for recipient in object.recipient_ids:
+                        ${(recipient.email)} ,
+                    % endfor
+                    % endif
+                ]]>
+            </field>
+            <field name="lang">${user.lang}</field>
+            <field name="model_id" ref="mail_multi_recipients.model_mail_multi_recipients_mail_multi_recipients"/>
+            <field name="auto_delete" eval="True"/>
+            <!--<field name="scheduled_date">${(datetime.datetime.now() + relativedelta(days=2)).strftime('%Y-%m-%d %H:%M')}</field>-->
+            <field name="body_html" ><![CDATA[
+                mail_template_demo
+            ]]></field>
+        </record>
+
+    </data>
+</odoo>

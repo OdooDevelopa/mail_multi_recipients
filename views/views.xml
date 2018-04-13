@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="mail_multi_recipients.form" model="ir.ui.view">
+            <field name="name">mail_multi_recipients.mail_multi_recipients</field>
+            <field name="model">mail_multi_recipients.mail_multi_recipients</field>
+            <field name="arch" type="xml">
+                <form string="mail_multi_recipients.mail_multi_recipients">
+                    <header>
+                        <button name="send_all_email" type="object" string="Send email all"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="recipient_ids"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+       <record id="mail_multi_recipients.act_window" model="ir.actions.act_window">
+           <field name="name">mail_multi_recipients.mail_multi_recipients</field>
+           <field name="type">ir.actions.act_window</field>
+           <field name="res_model">mail_multi_recipients.mail_multi_recipients</field>
+           <field name="view_mode">tree,form</field>
+           <field name="help" type="html">
+             <p class="oe_view_nocontent_create">
+               <!-- Add Text Here -->
+             </p><p>
+               <!-- More details about what a user can do with this object will be OK -->
+             </p>
+           </field>
+       </record>
+
+      <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+      <menuitem id="mail_multi_recipients_menu" name="mail_multi_recipients_menu" sequence="0"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="mail_multi_recipients_child" name="mail_multi_recipients_child"
+                  parent="mail_multi_recipients_menu" action="mail_multi_recipients.act_window" sequence="0"/>
+
+
+
+    </data>
+</odoo>
